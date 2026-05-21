@@ -1,0 +1,21 @@
+========== START PROCESSING .PTS FILES ==========
+
+--- Processing file: Sculpture ---
+  s=0.1000: CR=11.58, RMSE=51.167 mm, MAE=49.327 mm, comp=1.26s, decomp=2.03s
+  s=0.0100: CR=11.20, RMSE=5.003 mm, MAE=4.806 mm, comp=1.25s, decomp=2.11s
+  s=0.0010: CR=9.08, RMSE=0.500 mm, MAE=0.480 mm, comp=1.34s, decomp=2.99s
+  s=0.0001: CR=6.87, RMSE=0.050 mm, MAE=0.048 mm, comp=1.79s, decomp=5.19s
+========== SUMMARY RESULTS ==========
+       File        ScaleFactor      CR      MAE_mm     RMSE_mm     CompTime_s    DecompTime_s
+    ___________    ___________    ______    _______    ________    __________    ____________
+
+    'Sculpture'       0.1         11.579     49.327      51.167    1.2561        2.0252      
+    'Sculpture'      0.01           11.2     4.8062      5.0032    1.2484        2.1093      
+    'Sculpture'     0.001         9.0785    0.48046     0.50012    1.3445         2.987      
+    'Sculpture'    0.0001         6.8655     0.0482    0.050224    1.7911        5.1871      
+
+Results saved to CSV: E:\SpbSUITD\Semester2\LiDAD-pts-ptc\04_analyst\ket_qua_nen.csv
+Plot saved to: E:\SpbSUITD\Semester2\LiDAD-pts-ptc\04_analyst\CR_RMSE_plot.png
+
+========== DONE ==========
+>> 

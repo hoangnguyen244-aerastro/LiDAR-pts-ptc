@@ -1,0 +1,21 @@
+========== BAT DAU XU LY CAC FILE .PTS ==========
+
+--- Xu ly file: Facecade ---
+  s=0.1000: CR=12.03, RMSE=51.150 mm, MAE=49.308 mm, nen=2.14s, giai nen=2.21s
+  s=0.0100: CR=11.59, RMSE=4.998 mm, MAE=4.802 mm, nen=1.33s, giai nen=2.45s
+  s=0.0010: CR=9.44, RMSE=0.500 mm, MAE=0.480 mm, nen=2.65s, giai nen=6.40s
+  s=0.0001: CR=7.28, RMSE=0.050 mm, MAE=0.048 mm, nen=2.21s, giai nen=7.60s
+========== KET QUA TONG HOP ==========
+       File       ScaleFactor      CR       MAE_mm     RMSE_mm     CompTime_s    DecompTime_s
+    __________    ___________    ______    ________    ________    __________    ____________
+
+    'Facecade'       0.1         12.031      49.308       51.15    2.1439        2.2054      
+    'Facecade'      0.01         11.585      4.8016      4.9984    1.3307        2.4491      
+    'Facecade'     0.001         9.4432     0.47992     0.49967    2.6461        6.3972      
+    'Facecade'    0.0001         7.2826    0.048242    0.050265    2.2081        7.5966      
+
+Da luu ket qua vao file CSV: E:\SpbSUITD\Semester2\LiDAD-pts-ptc\04_analyst\ket_qua_nen.csv
+Da luu bieu do vao: E:\SpbSUITD\Semester2\LiDAD-pts-ptc\04_analyst\CR_RMSE_plot.png
+
+========== HOAN THANH ==========
+>> 

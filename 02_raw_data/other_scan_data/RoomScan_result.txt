@@ -1,0 +1,21 @@
+========== START PROCESSING .PTS FILES ==========
+
+--- Processing file: RoomScan ---
+  s=0.1000: CR=12.10, RMSE=49.527 mm, MAE=47.542 mm, comp=2.99s, decomp=3.43s
+  s=0.0100: CR=11.60, RMSE=4.998 mm, MAE=4.801 mm, comp=2.32s, decomp=3.99s
+  s=0.0010: CR=9.70, RMSE=0.500 mm, MAE=0.480 mm, comp=3.57s, decomp=6.40s
+  s=0.0001: CR=7.50, RMSE=0.050 mm, MAE=0.048 mm, comp=3.52s, decomp=11.12s
+========== SUMMARY RESULTS ==========
+       File       ScaleFactor      CR       MAE_mm     RMSE_mm     CompTime_s    DecompTime_s
+    __________    ___________    ______    ________    ________    __________    ____________
+
+    'RoomScan'       0.1         12.105      47.542      49.527    2.9947        3.4287      
+    'RoomScan'      0.01         11.604      4.8014      4.9984    2.3189        3.9859      
+    'RoomScan'     0.001         9.6962     0.48016     0.49983    3.5726        6.3952      
+    'RoomScan'    0.0001         7.4965    0.048275    0.050314    3.5227        11.117      
+
+Results saved to CSV: E:\SpbSUITD\Semester2\LiDAD-pts-ptc\04_analyst\ket_qua_nen.csv
+Plot saved to: E:\SpbSUITD\Semester2\LiDAD-pts-ptc\04_analyst\CR_RMSE_plot.png
+
+========== DONE ==========
+>> 
