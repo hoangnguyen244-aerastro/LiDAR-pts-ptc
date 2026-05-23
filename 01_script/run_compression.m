@@ -37,15 +37,18 @@ if ~exist(compressPy, 'file') || ~exist(decompressPy, 'file')
     error('Missing Python files in script folder');
 end
 
-% Luu ket qua vao bang
-Results = table();
-
 fprintf('========== START PROCESSING .PTS FILES ==========\n');
+
+% Luu ket qua tong hop de ve bieu do sau
+all_results = [];
 
 for f = 1:length(ptsFiles)
     input_pts = fullfile(rawDir, ptsFiles(f).name);
     [~, name, ~] = fileparts(ptsFiles(f).name);
     fprintf('\n--- Processing file: %s ---\n', name);
+    
+    % Tao bang ket qua rieng cho file nay
+    Results = table();
     
     for s_idx = 1:length(scale_factors)
         s = scale_factors(s_idx);
@@ -97,48 +100,24 @@ for f = 1:length(ptsFiles)
         RMSE_mm = sqrt(mean(errors.^2));
         
         % Save to table
-        row = table({name}, s, cr, MAE_mm, RMSE_mm, comp_time, dec_time, ...
-            'VariableNames', {'File', 'ScaleFactor', 'CR', 'MAE_mm', 'RMSE_mm', 'CompTime_s', 'DecompTime_s'});
+        row = table(s, cr, MAE_mm, RMSE_mm, comp_time, dec_time, ...
+            'VariableNames', {'ScaleFactor', 'CR', 'MAE_mm', 'RMSE_mm', 'CompTime_s', 'DecompTime_s'});
         Results = [Results; row];
+        
+        % Luu de ve bieu do tong hop sau
+        all_results = [all_results; {name, s, cr, RMSE_mm}];
         
         fprintf('  s=%.4f: CR=%.2f, RMSE=%.3f mm, MAE=%.3f mm, comp=%.2fs, decomp=%.2fs\n', ...
             s, cr, RMSE_mm, MAE_mm, comp_time, dec_time);
-        
-        % Xoa file tam (neu muon giu lai de kiem tra, hay comment dong nay)
-        % delete(output_ptc);
-        % delete(output_restored);
+    end
+    
+    %% Xuat ket qua rieng cho tung file
+    if height(Results) > 0
+        csvFile = fullfile(analystDir, sprintf('analyst_%s.csv', name));
+        writetable(Results, csvFile);
+        fprintf('Results saved to: %s\n', csvFile);
     end
 end
 
-%% Display summary table
-disp('========== SUMMARY RESULTS ==========');
-disp(Results);
-
-%% Save results to CSV
-csvFile = fullfile(analystDir, 'ket_qua_nen.csv');
-writetable(Results, csvFile);
-fprintf('Results saved to CSV: %s\n', csvFile);
-
-%% Plot CR and RMSE vs scale factor
-if height(Results) > 0
-    figure('Visible', 'off');
-    files_list = unique(Results.File);
-    for i = 1:length(files_list)
-        idx = strcmp(Results.File, files_list{i});
-        subplot(2,1,1);
-        semilogx(Results.ScaleFactor(idx), Results.CR(idx), '-o', 'LineWidth', 2); hold on;
-        subplot(2,1,2);
-        loglog(Results.ScaleFactor(idx), Results.RMSE_mm(idx), '-s', 'LineWidth', 2); hold on;
-    end
-    subplot(2,1,1);
-    xlabel('Scale factor s (m)'); ylabel('Compression Ratio CR');
-    title('CR vs s'); grid on; legend(files_list, 'Location', 'best');
-    subplot(2,1,2);
-    xlabel('Scale factor s (m)'); ylabel('RMSE (mm)');
-    title('RMSE vs s'); grid on; legend(files_list, 'Location', 'best');
-    saveas(gcf, fullfile(analystDir, 'CR_RMSE_plot.png'));
-    close(gcf);
-    fprintf('Plot saved to: %s\n', fullfile(analystDir, 'CR_RMSE_plot.png'));
-end
-
-fprintf('\n========== DONE ==========\n');
+fprintf('\n========== ALL FILES PROCESSED ==========\n');
+fprintf('Individual CSV files saved in: %s\n', analystDir);

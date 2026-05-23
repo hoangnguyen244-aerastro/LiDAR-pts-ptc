@@ -1,4 +1,0 @@
-1. code lưu file Plot của 4 file test đã đúng yêu cầu về plot của bài chưa ?
-Plot saved to: E:\SpbSUITD\Semester2\LiDAD-pts-ptc\04_analyst\CR_RMSE_plot.png
-2. Kết quả nén file này cần ghi bằng tiếng Anh, và có hậu tố _tên của file liDAR test 
-Results saved to CSV: E:\SpbSUITD\Semester2\LiDAD-pts-ptc\04_analyst\ket_qua_nen.csv
