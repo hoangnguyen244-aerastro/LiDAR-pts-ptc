@@ -24,6 +24,24 @@ LiDAR-pts-ptc/
 ├── 03_ptc/             # Output .ptc and restored .pts files will be saved here
 │
 └── 04_analyst/         # Output CSV results and figures will be saved here
+     ├── analyst_Facecade.csv
+     ├── analyst_Funiture.csv
+     ├── analyst_RoomScan.csv
+     ├── analyst_Sculpture.csv
+     ├── Table6_comparison.csv
+     ├── Figure3_benchmark.png
+     ├── CR_RMSE_plot.png
+     └── benchmark/
+         ├── Facecade_zip_benchmark.csv
+         ├── Facecade_laz_benchmark.csv
+         ├── Funiture_zip_benchmark.csv
+         ├── Funiture_laz_benchmark.csv
+         ├── RoomScan_zip_benchmark.csv
+         ├── RoomScan_laz_benchmark.csv
+         ├── Sculpture_zip_benchmark.csv
+         ├── Sculpture_laz_benchmark.csv
+         ├── all_benchmark_results.xlsx
+         └── benchmark_summary.xlsx
 
 ================================================================================
 REQUIREMENTS
@@ -38,15 +56,8 @@ REQUIREMENTS
 SETUP (ONE TIME)
 ================================================================================
 
-Step 1: Install Python if not already installed.
-        - Download from https://www.python.org/downloads/
-        - During installation, check "Add Python to PATH".
-
-Step 2: Verify Python installation by opening a terminal (cmd) and typing:
-            python --version
-
-Step 3: Copy all provided files into the "01_script" folder.
-
+Step 1: Install MATLAB r2015b and Python ver3.14 if not already installed.
+Step 2: Copy all provided files into the "01_script" folder.
 Step 4: Place your .pts files (e.g., Sculpture.pts, RoomScan.pts) into the "02_raw_data" folder.
 
 ================================================================================
@@ -55,16 +66,15 @@ HOW TO RUN
 
 1. Open MATLAB and navigate to the project root folder "LiDAR-pts-ptc".
 
-2. In the MATLAB command window, run:
-        cd 01_script
-        test_all_pts
+2. In the folder 01_script, run: 
+run_compression.m, benchmark_laz.m, benchmark_zip.m, collect_all_results.m, run_compression_with_rgb.m, plot_figure_benchmark.m 
 
 3. The script will:
    - Automatically detect all .pts files inside "02_raw_data".
    - For each file, compress with scale factors s = 0.1, 0.01, 0.001, 0.0001.
    - Decompress and compute CR, MAE, RMSE, compression/decompression time.
    - Save compressed .ptc and restored .pts files into "03_ptc".
-   - Save a CSV summary table (results.csv) into "04_analyst".
+   - Save a CSV summary table (results.csv) and plot images into "04_analyst".
 
 4. After execution, check the command window for live progress and final results.
 
@@ -97,7 +107,7 @@ TROUBLESHOOTING
 - Permission errors: Make sure "03_ptc" and "04_analyst" folders exist and are writable.
 
 ================================================================================
-CONTACT
+CONTACT: hoangnguyen.artist@gmail.com
 ================================================================================
 
 For questions or bug reports, please contact the author.
